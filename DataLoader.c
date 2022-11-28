@@ -26,5 +26,9 @@ struct test_scenario {
  */
 struct test_scenario* load_test_data(char* filename)
 {
-
+    FILE * filePointer;
+    filePointer = fopen(filename, "r");
+    if (filePointer == NULL) {
+        fprintf(stderr, "Error while opening file %s\n", filename);
+    }
 }
