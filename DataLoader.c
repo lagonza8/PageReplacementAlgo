@@ -41,8 +41,21 @@ struct test_scenario* load_test_data(char* filename)
 
     struct test_scenario* data = (struct test_scenario*)malloc(sizeof(struct test_scenario*));
 
+    // read the first line from the .txt file, it is the number of pages
     data->page_count = strtol(fgets(buffer, SIZE, filePointer), &ptr, 10);
-    //printf("page count: %d \n", data->page_count);
+    // fgets() will stop reading characters when it reads a new line character
+    printf("page count: %d \n", data->page_count);
+
+    // read the second line from the .txt file, it is the number of available frames in RAM
+    data->frame_count = strtol(fgets(buffer, SIZE, filePointer), &ptr, 10);
+    printf("frame count: %d \n", data->frame_count);
+
+    // read the third line from the .txt file, it is the number of entries in the reference string
+    data->refstr_len = strtol(fgets(buffer, SIZE, filePointer), &ptr, 10);
+    printf("reference string entry count: %d \n", data->refstr_len);
+
+    // The rest of the file is dedicated to the page numbers in the reference string
+
 
     fclose(filePointer);
     //releases the memory allocated in RAM for the FILE struct and buffer containing the file copy
