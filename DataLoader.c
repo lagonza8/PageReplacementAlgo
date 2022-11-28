@@ -26,9 +26,13 @@ struct test_scenario {
  */
 struct test_scenario* load_test_data(char* filename)
 {
-    FILE * filePointer;
+    FILE * filePointer = NULL;
+    // a pointer to a struct FILE in RAM, the struct in RAM contains pointer to a buffer in RAM
     filePointer = fopen(filename, "r");
+    // fopen() populates the FILE struct in RAM and the buffer created in RAM with a copy of the file it opened from secondary store
     if (filePointer == NULL) {
         fprintf(stderr, "Error while opening file %s\n", filename);
     }
+    fclose(filePointer);
+    //releases the memory allocated in RAM for the FILE struct and buffer containing the file copy
 }
