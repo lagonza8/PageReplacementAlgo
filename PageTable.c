@@ -4,7 +4,13 @@
  * @author Luis A. Gonzalez, Acuna
  * @version 11.28.2022
  */
-
+/*
+enum replacement_algorithm {
+    FIFO=0,
+    LRU,
+    MFU
+};
+*/
 #include <PageTable.h>
 
 struct page_table_entry{
@@ -12,7 +18,10 @@ struct page_table_entry{
 };
 
 struct page_table{
-
+    int page_count;
+    int frame_count;
+    enum replacement_algorithm algo_mode;
+    int debug_mode;
 };
 
 /**
@@ -26,7 +35,13 @@ struct page_table{
  */
 struct page_table* page_table_create(int page_count, int frame_count, enum replacement_algorithm algorithm, int verbose)
 {
+    struct page_table* pt = (struct page_table*)malloc(sizeof(struct page_table*));
+    pt->page_count = page_count;        printf("page count: %d\n", pt->page_count);
+    pt->frame_count = frame_count;      printf("frame count: %d\n", pt->frame_count);
+    pt->algo_mode = algorithm;          printf("algorithm: %d\n", pt->algo_mode);
+    pt->debug_mode = verbose;           printf("verbose: %d\n", pt->debug_mode);
 
+    return pt;
 }
 
 /**
