@@ -55,7 +55,8 @@ struct test_scenario* load_test_data(char* filename)
     printf("reference string entry count: %d \n", data->refstr_len);
 
     // The rest of the file is dedicated to the page numbers in the reference string
-    for (int i = 0; i < data->refstr_len; i++) {
+    int i;
+    while (!feof(filePointer)) {
         data->refstr[i] = strtol(fgets(buffer, SIZE, filePointer), &ptr, 10);
         printf("%d \n", data->refstr[i]);
     }
