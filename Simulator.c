@@ -14,6 +14,8 @@ int main(int argc, char* argv[]) {
     char* filename = argv[2];
 
     struct test_scenario* data = load_test_data(filename);
+
+    /*
     struct page_table* pt_fifo = page_table_create(data->page_count, data->frame_count, FIFO, 0);
     struct page_table* pt_lru = page_table_create(data->page_count, data->frame_count, LRU, 0);
     struct page_table* pt_mfu = page_table_create(data->page_count, data->frame_count, MFU, 0);
@@ -43,4 +45,7 @@ int main(int argc, char* argv[]) {
     page_table_destroy(&pt_lru);
     page_table_destroy(&pt_mfu);
     free(data);
+    */
+
+
 }
