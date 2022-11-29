@@ -10,17 +10,6 @@
 #define SIZE 10
 char buffer[SIZE], *ptr;
 
-//structs
-/*
-struct test_scenario {
-    int refstr_len;
-    int refstr[512];
-    int page_count;
-    int frame_count;
-};
-*/
-
-
 /**
  * Loads a test_scenario strut from a textfile.
  *
@@ -60,7 +49,6 @@ struct test_scenario* load_test_data(char* filename)
         data->refstr[i] = strtol(fgets(buffer, SIZE, filePointer), &ptr, 10);
         printf("%d \n", data->refstr[i]);
     }
-
 
     fclose(filePointer);
     //releases the memory allocated in RAM for the FILE struct and buffer containing the file copy
