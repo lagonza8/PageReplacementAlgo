@@ -33,21 +33,21 @@ struct test_scenario* load_test_data(char* filename)
     // read the first line from the .txt file, it is the number of pages
     data->page_count = strtol(fgets(buffer, SIZE, filePointer), &ptr, 10);
     // fgets() will stop reading characters when it reads a new line character
-    printf("page count: %d \n", data->page_count);
+    //printf("page count: %d \n", data->page_count);
 
     // read the second line from the .txt file, it is the number of available frames in RAM
     data->frame_count = strtol(fgets(buffer, SIZE, filePointer), &ptr, 10);
-    printf("frame count: %d \n", data->frame_count);
+    //printf("frame count: %d \n", data->frame_count);
 
     // read the third line from the .txt file, it is the number of entries in the reference string
     data->refstr_len = strtol(fgets(buffer, SIZE, filePointer), &ptr, 10);
-    printf("reference string entry count: %d \n", data->refstr_len);
+    //printf("reference string entry count: %d \n", data->refstr_len);
 
     // The rest of the file is dedicated to the page numbers in the reference string
     int i = 0;
     while (!feof(filePointer)) {
         data->refstr[i] = strtol(fgets(buffer, SIZE, filePointer), &ptr, 10);
-        printf("%d \n", data->refstr[i]);
+        //printf("%d \n", data->refstr[i]);
     }
 
     fclose(filePointer);
